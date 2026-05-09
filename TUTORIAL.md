@@ -53,7 +53,15 @@ Then install the toolchain's dependencies:
 cd toolchain && poetry install && cd ..
 ```
 
-This creates a self-contained virtual environment inside `toolchain/` and installs everything needed, including the default OCR engine (marker).
+This creates a self-contained virtual environment inside `toolchain/`.
+
+### 1.5 Activate the virtual environment
+
+```bash
+source toolchain/.venv/bin/activate
+```
+
+You will need to run this once each time you open a new terminal window. Your prompt will change to show `(.venv)` when it is active. All the `python3` commands in the rest of this tutorial assume the virtual environment is active.
 
 ---
 
@@ -62,7 +70,7 @@ This creates a self-contained virtual environment inside `toolchain/` and instal
 The sample scans are in `publishing/tell-me-bella/ocr/scans/clean/`. Run the OCR script to extract their text and assemble it into a single Markdown file:
 
 ```bash
-toolchain/.venv/bin/python toolchain/scripts/ocr-to-markdown.py \
+python3 toolchain/scripts/ocr-to-markdown.py \
   "publishing/tell-me-bella/ocr/scans/clean"
 ```
 
