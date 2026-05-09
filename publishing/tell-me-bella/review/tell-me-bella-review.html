@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Copy-edit Review: Tell Me, Bella</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    max-width: 860px; margin: 2rem auto; padding: 0 1.25rem;
+    color: #1a1a1a; line-height: 1.6; font-size: 0.95rem;
+  }
+  h1 { font-size: 1.4rem; margin-bottom: 0.2rem; }
+  .meta { color: #666; font-size: 0.875rem; margin-bottom: 1.5rem; }
+  .summary {
+    display: flex; flex-wrap: wrap; gap: 0.5rem;
+    margin-bottom: 2rem; padding: 1rem;
+    background: #f7f7f7; border-radius: 6px;
+  }
+  .summary h2 { width: 100%; font-size: 0.875rem; margin: 0 0 0.5rem; color: #555; }
+  .stat {
+    padding: 0.3rem 0.75rem; border-radius: 20px;
+    font-size: 0.8rem; font-weight: 600;
+  }
+  .stat.typo        { background: #ffd5d5; color: #b71c1c; }
+  .stat.punctuation { background: #ffe0b2; color: #bf360c; }
+  .stat.style       { background: #fff9c4; color: #827717; }
+  .stat.consistency { background: #d5e8f7; color: #0d47a1; }
+  .stat.query       { background: #ede7f6; color: #4a148c; }
+  .chapter { margin-bottom: 2.5rem; }
+  .chapter h2 {
+    font-size: 1rem; border-bottom: 2px solid #eee;
+    padding-bottom: 0.4rem; margin-bottom: 1rem;
+  }
+  .chapter-count { font-size: 0.8rem; color: #888; font-weight: normal; margin-left: 0.5rem; }
+  .issue {
+    display: flex; gap: 0.75rem; align-items: flex-start;
+    padding: 0.6rem 0.75rem; border-radius: 5px;
+    margin-bottom: 0.4rem; background: #fafafa;
+    border-left: 3px solid #ccc;
+  }
+  .issue.typo        { border-left-color: #e53935; }
+  .issue.punctuation { border-left-color: #fb8c00; }
+  .issue.style       { border-left-color: #fdd835; }
+  .issue.consistency { border-left-color: #1e88e5; }
+  .issue.query       { border-left-color: #8e24aa; }
+  .badge {
+    font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
+    padding: 2px 6px; border-radius: 3px; white-space: nowrap; flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .badge.typo        { background: #ffd5d5; color: #b71c1c; }
+  .badge.punctuation { background: #ffe0b2; color: #bf360c; }
+  .badge.style       { background: #fff9c4; color: #827717; }
+  .badge.consistency { background: #d5e8f7; color: #0d47a1; }
+  .badge.query       { background: #ede7f6; color: #4a148c; }
+  .issue-body { flex: 1; }
+  .context {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 0.9rem; margin: 0 0 0.25rem;
+  }
+  .context mark { background: #ffeeba; padding: 0 1px; border-radius: 2px; }
+  .suggestion { font-size: 0.83rem; color: #555; margin: 0; }
+  .suggestion strong { color: #1a1a1a; }
+  .no-issues { color: #888; font-style: italic; font-size: 0.875rem; }
+</style>
+</head>
+<body>
+
+<h1>Copy-edit Review: Tell Me, Bella</h1>
+<p class="meta">Vahan Totovents · Reviewed against Hart's Rules (British English)</p>
+
+<div class="summary">
+  <h2>Summary</h2>
+  <span class="stat typo">1 typo</span>
+  <span class="stat punctuation">5 punctuation</span>
+  <span class="stat style">3 style</span>
+  <span class="stat consistency">0 consistency</span>
+  <span class="stat query">3 query</span>
+</div>
+
+<section class="chapter">
+  <h2>Foreword (M. K.) <span class="chapter-count">5 issues</span></h2>
+
+  <div class="issue typo">
+    <span class="badge typo">Typo</span>
+    <div class="issue-body">
+      <p class="context">…He edited a <mark>news-paper</mark> in Tiflis in 1917-18…</p>
+      <p class="suggestion">→ <strong>newspaper</strong> — one word; the hyphen is a residual OCR line-break artefact preserved by <code>--join-hyphens</code>.</p>
+    </div>
+  </div>
+
+  <div class="issue punctuation">
+    <span class="badge punctuation">Punct</span>
+    <div class="issue-body">
+      <p class="context">…he lost his <mark>father-a</mark> prosperous landowner and a high government official…</p>
+      <p class="suggestion">→ Hyphen used as a parenthetical dash. Hart's Rules: spaced en dash — <strong>his father — a prosperous landowner</strong></p>
+    </div>
+  </div>
+
+  <div class="issue punctuation">
+    <span class="badge punctuation">Punct</span>
+    <div class="issue-body">
+      <p class="context">…He edited a news-paper in Tiflis in <mark>1917-18</mark>, wrote numerous articles…</p>
+      <p class="suggestion">→ Hyphen used for a range. Hart's Rules: unspaced en dash — <strong>1917–18</strong></p>
+    </div>
+  </div>
+
+  <div class="issue style">
+    <span class="badge style">Style</span>
+    <div class="issue-body">
+      <p class="context">…wrote numerous articles, a novel, literary studies <mark>and</mark> other material…</p>
+      <p class="suggestion">→ Oxford comma missing before the final item in a list of four. <strong>literary studies, and other material</strong></p>
+    </div>
+  </div>
+
+  <div class="issue query">
+    <span class="badge query">Query</span>
+    <div class="issue-body">
+      <p class="context">…<mark>Life on the Old Roman Road</mark>… <mark>Scenes from an Armenian Childhood</mark>…</p>
+      <p class="suggestion">Book titles appear in plain roman type. In published prose these would normally be italicised. Should Markdown italic markup be added — e.g. <em>*Life on the Old Roman Road*</em>? Confirm with editor whether this is intentional for the current workflow.</p>
+    </div>
+  </div>
+
+</section>
+
+<section class="chapter">
+  <h2>Pale-blue Flowers <span class="chapter-count">7 issues</span></h2>
+
+  <div class="issue punctuation">
+    <span class="badge punctuation">Punct</span>
+    <div class="issue-body">
+      <p class="context">…the priest and the <mark>beadle—the</mark> priest had arranged for the clerk…</p>
+      <p class="suggestion">→ Em dash with no spaces. Hart's Rules: spaced en dash — <strong>beadle — the</strong></p>
+    </div>
+  </div>
+
+  <div class="issue punctuation">
+    <span class="badge punctuation">Punct</span>
+    <div class="issue-body">
+      <p class="context">…in spite of their fervent <mark>efforts-they</mark> had lit countless candles in front of pictures of <mark>saints-they</mark> had not produced any children…</p>
+      <p class="suggestion">→ Hyphens used as parenthetical dashes (twice). Hart's Rules: spaced en dashes — <strong>efforts — they</strong> … <strong>saints — they</strong></p>
+    </div>
+  </div>
+
+  <div class="issue query">
+    <span class="badge query">Query</span>
+    <div class="issue-body">
+      <p class="context">…he could never <mark>reconcile with</mark> the thought that a son of his own…</p>
+      <p class="suggestion">Unusual construction. The standard idiom is <em>reconcile himself to</em> or <em>come to terms with</em>. Without the reflexive pronoun the phrasing reads oddly — possible translator's idiom. Confirm with editor.</p>
+    </div>
+  </div>
+
+  <div class="issue style">
+    <span class="badge style">Style</span>
+    <div class="issue-body">
+      <p class="context">…until a <mark>snow-flake</mark> landed on his <mark>eye-lashes</mark>…</p>
+      <p class="suggestion">→ Both are standard closed forms in modern British English: <strong>snowflake</strong>, <strong>eyelashes</strong>. These hyphens may reflect period usage in the original translation — confirm with editor if you wish to preserve the 1960s flavour.</p>
+    </div>
+  </div>
+
+  <div class="issue query">
+    <span class="badge query">Query</span>
+    <div class="issue-body">
+      <p class="context">…if he came across <mark>a bear-show</mark>, he would stop and watch it…</p>
+      <p class="suggestion">Unusual compound. <em>Bear show</em> (open) or <em>bear-baiting show</em> might read more naturally to a modern audience. Possible translator's idiom or period usage — confirm with editor.</p>
+    </div>
+  </div>
+
+
+</section>
+
+</body>
+</html>

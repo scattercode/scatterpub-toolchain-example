@@ -1,9 +1,6 @@
 # Generated markdown extracts (reproducible from the .vellum source)
 publishing/*/review/*.md
 
-# Generated OCR output (reproducible by re-running ocr-to-markdown.py / clean-ocr.py)
-publishing/*/ocr/*.md
-
 # Raw scans — large originals; only the edited clean PDFs are kept
 publishing/*/ocr/scans/raw/
 
