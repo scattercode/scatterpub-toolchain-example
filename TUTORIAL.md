@@ -3,6 +3,7 @@
 This tutorial walks you through the complete pipeline for this example project — from OCR'ing the sample scans to producing a clean, AI-reviewed Word document.
 
 By the end you will have:
+
 - A raw Markdown file assembled from the scans
 - A cleaned-up version with OCR artefacts removed
 - An AI-corrected version with context-dependent OCR errors fixed
@@ -32,7 +33,7 @@ git submodule update --init
 
 ### 1.3 Install system tools
 
-These are installed once via [Homebrew](https://brew.sh). If you do not have Homebrew, install it first by following the instructions at https://brew.sh.
+These are installed once via [Homebrew](https://brew.sh). If you do not have Homebrew, install it first by following the instructions at <https://brew.sh>.
 
 ```bash
 brew install poppler    # extracts text from PDFs
@@ -83,11 +84,12 @@ This will take a minute or two — the default OCR engine (marker) uses a machin
 
 When it finishes, you will find the result at:
 
-```
+```text
 publishing/tell-me-bella/ocr/tell-me-bella-raw.md
 ```
 
 Open it and have a look. You will notice some issues typical of OCR output:
+
 - Running headers (page number + title repeated at the top of each page)
 - Occasional invisible characters
 - Words split across lines with a hyphen
@@ -114,7 +116,7 @@ python3 toolchain/scripts/clean-ocr.py \
 
 The cleaned file is written to:
 
-```
+```text
 publishing/tell-me-bella/ocr/tell-me-bella-clean.md
 ```
 
@@ -134,13 +136,13 @@ The Python script catches mechanical artefacts, but some OCR errors require read
 
 With Claude Code open (step 1.6), load the copy-editor skill:
 
-```
+```text
 /copyeditor
 ```
 
 Then ask Claude to perform an OCR artefact correction pass and write a corrected Markdown file:
 
-```
+```text
 Please apply an OCR artefact correction pass to
 publishing/tell-me-bella/ocr/tell-me-bella-clean.md
 and write the corrected version to
@@ -149,7 +151,7 @@ publishing/tell-me-bella/ocr/tell-me-bella-ai-clean.md
 
 Claude will read the file, identify and fix OCR errors in context, and write the result to:
 
-```
+```text
 publishing/tell-me-bella/ocr/tell-me-bella-ai-clean.md
 ```
 
@@ -168,27 +170,27 @@ cp publishing/tell-me-bella/ocr/tell-me-bella-ai-clean.md \
 
 With the same workspace open, load the copy-editor skill:
 
-```
+```text
 /copyeditor
 ```
 
 Then ask Claude to produce a full style review:
 
-```
+```text
 Please produce a full copy-edit review of
 publishing/tell-me-bella/draft/tell-me-bella.md
 ```
 
 Claude will read the file, work through it chapter by chapter, and write a self-contained HTML review to:
 
-```
+```text
 publishing/tell-me-bella/review/tell-me-bella-review.html
 ```
 
 Open that file in any web browser. Each issue is shown as a colour-coded card:
 
 | Colour | Category | Used for |
-|---|---|---|
+| --- | --- | --- |
 | Red | TYPO | Spelling errors, wrong or missing words |
 | Orange | PUNCT | Quotation marks, dashes, ellipsis |
 | Yellow | STYLE | British English, capitalisation, numbers |
@@ -210,11 +212,12 @@ python3 toolchain/scripts/md-to-docx.py \
 
 The result is written to:
 
-```
+```text
 publishing/tell-me-bella/draft/tell-me-bella.docx
 ```
 
 This Word document is ready to:
+
 - **Share with a human editor** — they can read and annotate it in Word or Google Docs
 - **Import into Vellum** — open Vellum, choose *Import Word Document*, and select the file; each chapter heading will be detected as a chapter break
 
