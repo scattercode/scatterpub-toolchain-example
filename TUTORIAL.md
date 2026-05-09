@@ -132,7 +132,7 @@ The Python script catches mechanical artefacts, but some OCR errors require read
 - **Garbled proper nouns** — stray characters inserted into names: `Tow:vanda` for `Tourvanda`
 - **Exclamation marks misread** — `!` rendered as `l` or `I` inside quoted speech: `lad l` for `lad!`
 
-With the workspace from step 1.6 open, load the copy-editor skill:
+With Claude Code open (step 1.6), load the copy-editor skill:
 
 ```
 /copyeditor
@@ -159,6 +159,13 @@ Review the output — Claude will catch most OCR errors, but corrections to prop
 
 ## Part 5 — AI copy-edit with Claude Code
 
+Up until this point, everything can be re-created by re-running the steps above. However, now it is over to you to start manually updating the copy, ready for publication. Take a copy of the automatically generated `tell-me-bella-ai-clean.md` file and put it in the `draft` folder as plain `tell-me-bella.md`
+
+```bash
+cp publishing/tell-me-bella/ocr/tell-me-bella-ai-clean.md \
+  publishing/tell-me-bella/draft/tell-me-bella.md
+```
+
 With the same workspace open, load the copy-editor skill:
 
 ```
@@ -169,7 +176,7 @@ Then ask Claude to produce a full style review:
 
 ```
 Please produce a full copy-edit review of
-publishing/tell-me-bella/ocr/tell-me-bella-ai-clean.md
+publishing/tell-me-bella/draft/tell-me-bella.md
 ```
 
 Claude will read the file, work through it chapter by chapter, and write a self-contained HTML review to:
@@ -188,7 +195,7 @@ Open that file in any web browser. Each issue is shown as a colour-coded card:
 | Blue | CONSISTENCY | The same word formatted differently in different places |
 | Purple | QUERY | Ambiguous phrasing — flagged for a human to decide |
 
-Work through the review and make any edits you agree with directly in `tell-me-bella-ai-clean.md`.
+Work through the review and make any edits you agree with directly in `tell-me-bella.md`.
 
 ---
 
@@ -198,13 +205,13 @@ Once you are happy with the cleaned Markdown, convert it to a Word document:
 
 ```bash
 python3 toolchain/scripts/md-to-docx.py \
-  "publishing/tell-me-bella/ocr/tell-me-bella-ai-clean.md"
+  "publishing/tell-me-bella/draft/tell-me-bella.md"
 ```
 
 The result is written to:
 
 ```
-publishing/tell-me-bella/ocr/tell-me-bella-ai-clean.docx
+publishing/tell-me-bella/draft/tell-me-bella.docx
 ```
 
 This Word document is ready to:
