@@ -5,6 +5,7 @@ This tutorial walks you through the complete pipeline for this example project �
 By the end you will have:
 - A raw Markdown file assembled from the scans
 - A cleaned-up version with OCR artefacts removed
+- An AI-corrected version with context-dependent OCR errors fixed
 - An HTML copy-edit review produced by Claude
 - A Word document ready to share or import into Vellum
 
@@ -63,6 +64,19 @@ source toolchain/.venv/bin/activate
 
 You will need to run this once each time you open a new terminal window. Your prompt will change to show `(.venv)` when it is active. All the `python3` commands in the rest of this tutorial assume the virtual environment is active.
 
+### 1.6 Set up the Claude Code workspace
+
+Parts 4 and 5 of this tutorial use [Claude Code](https://claude.ai/code). You will need two repositories open as a workspace:
+
+1. **scatterpub-toolchain-example** (this project)
+2. **scatterpub-toolchain** — clone it alongside if you have not already:
+   ```bash
+   git clone https://github.com/scattercode/scatterpub-toolchain.git
+   ```
+   Then add it to your Claude Code workspace.
+
+Having both repositories open allows Claude to discover the skills in `scatterpub-toolchain` automatically.
+
 ---
 
 ## Part 2 — OCR the scans
@@ -117,39 +131,53 @@ Compare it with the raw version — running headers will be gone, invisible char
 
 ---
 
-## Part 4 — The manual bit
+## Part 4 — AI OCR correction pass
 
-At this point, it's worth emphasizing that OCR is far from perfect. The common problematic artefacts of OCR should have been removed by the clean-up script, but it's likely that you will need to work your way through the cleaned file and compare it to the original book or scans to see whether it missed or made a mess of anything that you need to fix manually.
+The Python script catches mechanical artefacts, but some OCR errors require reading in context. The script cannot reliably detect:
 
-Examples you will see from the example scans in this project are:
+- **Fused words** — two words joined without a space: `ofMezre`, `onthe`, `OldRomanRoad`
+- **Dropped characters** — a character missed by the scanner, producing a plausible-looking but wrong word: `bom` for `born`, `Westem` for `Western`
+- **Character substitutions** — a `d` misread as `cl` in certain typefaces: `Sadcller` for `Saddler`
+- **Garbled proper nouns** — stray characters inserted into names: `Tow:vanda` for `Tourvanda`
+- **Exclamation marks misread** — `!` rendered as `l` or `I` inside quoted speech: `lad l` for `lad!`
 
-1. Spaces where there should be none.
-2. Two letters joining. e.g. "rn" becoming the single letter "m".
-3. Letters splitting. e.g. "d" becoming "cl".
-
----
-
-## Part 5 — AI copy-edit with Claude Code
-
-Open [Claude Code](https://claude.ai/code) in this project folder. You will need two repositories open as a workspace:
-
-1. **scatterpub-toolchain-example** (this project)
-2. **scatterpub-toolchain** — clone it alongside if you have not already:
-   ```bash
-   git clone https://github.com/scattercode/scatterpub-toolchain.git
-   ```
-   Then add it to your Claude Code workspace.
-
-With both repositories open, load the copy-editor skill:
+With the workspace from step 1.6 open, load the copy-editor skill:
 
 ```
 /copyeditor
 ```
 
-Claude will ask for the path to the Markdown file. Provide:
+Then ask Claude to perform an OCR artefact correction pass and write a corrected Markdown file:
 
 ```
+Please apply an OCR artefact correction pass to
 publishing/tell-me-bella/ocr/tell-me-bella-clean.md
+and write the corrected version to
+publishing/tell-me-bella/ocr/tell-me-bella-ai-clean.md
+```
+
+Claude will read the file, identify and fix OCR errors in context, and write the result to:
+
+```
+publishing/tell-me-bella/ocr/tell-me-bella-ai-clean.md
+```
+
+Review the output — Claude will catch most OCR errors, but corrections to proper nouns and place names are worth checking against the original scans before proceeding.
+
+---
+
+## Part 5 — AI copy-edit with Claude Code
+
+With the same workspace open and the copy-editor skill loaded, ask Claude to produce a full style review of the AI-corrected file:
+
+```
+/copyeditor
+```
+
+Provide the path to the corrected file:
+
+```
+publishing/tell-me-bella/ocr/tell-me-bella-ai-clean.md
 ```
 
 Claude will read the file, work through it chapter by chapter, and write a self-contained HTML review to:
@@ -168,7 +196,7 @@ Open that file in any web browser. Each issue is shown as a colour-coded card:
 | Blue | CONSISTENCY | The same word formatted differently in different places |
 | Purple | QUERY | Ambiguous phrasing — flagged for a human to decide |
 
-Work through the review and make any edits you agree with directly in `tell-me-bella-clean.md`.
+Work through the review and make any edits you agree with directly in `tell-me-bella-ai-clean.md`.
 
 ---
 
