@@ -168,15 +168,16 @@ Review the output — Claude will catch most OCR errors, but corrections to prop
 
 ## Part 5 — AI copy-edit with Claude Code
 
-With the same workspace open and the copy-editor skill loaded, ask Claude to produce a full style review of the AI-corrected file:
+With the same workspace open, load the copy-editor skill:
 
 ```
 /copyeditor
 ```
 
-Provide the path to the corrected file:
+Then ask Claude to produce a full style review:
 
 ```
+Please produce a full copy-edit review of
 publishing/tell-me-bella/ocr/tell-me-bella-ai-clean.md
 ```
 
@@ -206,13 +207,13 @@ Once you are happy with the cleaned Markdown, convert it to a Word document:
 
 ```bash
 python3 toolchain/scripts/md-to-docx.py \
-  "publishing/tell-me-bella/ocr/tell-me-bella-clean.md"
+  "publishing/tell-me-bella/ocr/tell-me-bella-ai-clean.md"
 ```
 
 The result is written to:
 
 ```
-publishing/tell-me-bella/ocr/tell-me-bella-clean.docx
+publishing/tell-me-bella/ocr/tell-me-bella-ai-clean.docx
 ```
 
 This Word document is ready to:
