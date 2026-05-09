@@ -62,7 +62,7 @@ This creates a self-contained virtual environment inside `toolchain/` and instal
 The sample scans are in `publishing/tell-me-bella/ocr/scans/clean/`. Run the OCR script to extract their text and assemble it into a single Markdown file:
 
 ```bash
-poetry run --directory toolchain python toolchain/scripts/ocr-to-markdown.py \
+toolchain/.venv/bin/python toolchain/scripts/ocr-to-markdown.py \
   "publishing/tell-me-bella/ocr/scans/clean"
 ```
 
@@ -78,6 +78,10 @@ Open it and have a look. You will notice some issues typical of OCR output:
 - Running headers (page number + title repeated at the top of each page)
 - Occasional invisible characters
 - Words split across lines with a hyphen
+
+As a note on OCR, please do make an effort to ensure that when you scan a book, you get the pages as flat as possible. Professional book scanning equipment for archives presses a sheet of glass down on the page to help with this. I then open the raw PDF scans in Adobe Acrobat where I crop them and align them so there is a clean rectangular block of text without any text visible from an opposite page. You can see what I mean if you look at the example scans in this project.
+
+An additional pro-tip is to put a sheet of black paper behind the page being scanned. This ensures that the text on the other side of the page does not come through in the scan. That can be picked up by OCR, causing all sorts of extra letters to appear in the resulting text output.
 
 ---
 
@@ -100,6 +104,8 @@ publishing/tell-me-bella/ocr/tell-me-bella-clean.md
 ```
 
 Compare it with the raw version — running headers will be gone, invisible characters removed, and line-break hyphens joined.
+
+At this point, it's worth noting that OCR is far from perfect. The common problematic artefacts of OCR should have been removed by the clean-up script, but it's likely that you will need to work your way through the cleaned file and compare it to the original book or scans to see whether it missed or made a mess of anything that you need to fix manually.
 
 ---
 

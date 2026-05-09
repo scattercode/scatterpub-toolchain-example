@@ -43,7 +43,7 @@ Run from the repository root:
 
 ```bash
 # OCR the clean scans → raw Markdown
-poetry run --directory toolchain python toolchain/scripts/ocr-to-markdown.py \
+toolchain/.venv/bin/python toolchain/scripts/ocr-to-markdown.py \
   "publishing/tell-me-bella/ocr/scans/clean"
 
 # Clean the raw output
