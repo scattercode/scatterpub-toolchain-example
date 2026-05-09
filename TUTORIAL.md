@@ -64,18 +64,9 @@ source toolchain/.venv/bin/activate
 
 You will need to run this once each time you open a new terminal window. Your prompt will change to show `(.venv)` when it is active. All the `python3` commands in the rest of this tutorial assume the virtual environment is active.
 
-### 1.6 Set up the Claude Code workspace
+### 1.6 Open the project in Claude Code
 
-Parts 4 and 5 of this tutorial use [Claude Code](https://claude.ai/code). You will need two repositories open as a workspace:
-
-1. **scatterpub-toolchain-example** (this project)
-2. **scatterpub-toolchain** — clone it alongside if you have not already:
-   ```bash
-   git clone https://github.com/scattercode/scatterpub-toolchain.git
-   ```
-   Then add it to your Claude Code workspace.
-
-Having both repositories open allows Claude to discover the skills in `scatterpub-toolchain` automatically.
+Parts 4 and 5 of this tutorial use [Claude Code](https://claude.ai/code). Open this project folder in Claude Code — the skills are already wired up via symlinks in `.claude/skills/`, so no additional workspace setup is needed.
 
 ---
 
