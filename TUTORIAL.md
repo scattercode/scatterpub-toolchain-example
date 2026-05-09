@@ -100,10 +100,12 @@ The clean-up script removes the most common OCR artefacts automatically:
 ```bash
 python3 toolchain/scripts/clean-ocr.py \
   "publishing/tell-me-bella/ocr/tell-me-bella-raw.md" \
-  --join-hyphens
+  --join-hyphens --reflow
 ```
 
 `--join-hyphens` joins words that were split across lines by the typesetter (e.g. `news-\npaper` becomes `news-paper`). The hyphen is kept so you can review each join and decide whether to remove it.
+
+`--reflow` joins the remaining soft line-breaks within each paragraph into a single long line. OCR preserves the typeset line breaks from the printed page; `--reflow` removes these so each paragraph becomes one continuous line of text.
 
 The cleaned file is written to:
 
@@ -111,13 +113,23 @@ The cleaned file is written to:
 publishing/tell-me-bella/ocr/tell-me-bella-clean.md
 ```
 
-Compare it with the raw version — running headers will be gone, invisible characters removed, and line-break hyphens joined.
-
-At this point, it's worth noting that OCR is far from perfect. The common problematic artefacts of OCR should have been removed by the clean-up script, but it's likely that you will need to work your way through the cleaned file and compare it to the original book or scans to see whether it missed or made a mess of anything that you need to fix manually.
+Compare it with the raw version — running headers will be gone, invisible characters removed, line-break hyphens joined, and each paragraph on a single line.
 
 ---
 
-## Part 4 — AI copy-edit with Claude Code
+## Part 4 — The manual bit
+
+At this point, it's worth emphasizing that OCR is far from perfect. The common problematic artefacts of OCR should have been removed by the clean-up script, but it's likely that you will need to work your way through the cleaned file and compare it to the original book or scans to see whether it missed or made a mess of anything that you need to fix manually.
+
+Examples you will see from the example scans in this project are:
+
+1. Spaces where there should be none.
+2. Two letters joining. e.g. "rn" becoming the single letter "m".
+3. Letters splitting. e.g. "d" becoming "cl".
+
+---
+
+## Part 5 — AI copy-edit with Claude Code
 
 Open [Claude Code](https://claude.ai/code) in this project folder. You will need two repositories open as a workspace:
 
@@ -160,7 +172,7 @@ Work through the review and make any edits you agree with directly in `tell-me-b
 
 ---
 
-## Part 5 — Generate a Word document
+## Part 6 — Generate a Word document
 
 Once you are happy with the cleaned Markdown, convert it to a Word document:
 
