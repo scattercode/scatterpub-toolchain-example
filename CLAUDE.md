@@ -86,22 +86,22 @@ Skills are provided via symlinks in `.claude/skills/` pointing into the `toolcha
 `publishing/*/book.md` **should** be edited — it is the source of truth for book title and author metadata.
 
 
-## Commit messages
+## Git hooks
 
-This project uses [Conventional Commits](https://www.conventionalcommits.org/).
-They are enforced on every local commit by a shared git hook at
-`.githooks/commit-msg`.
+Git hooks are managed by [Lefthook](https://lefthook.dev) (`lefthook.yml`).
 
-Format: `<type>[(scope)][!]: <description>`
+- **commit-msg** — enforces [Conventional Commits](https://www.conventionalcommits.org/)
+  via the shared script at `.githooks/commit-msg`.
+
+There is no pre-commit linting, as this repo is mostly manuscript prose.
+
+Conventional Commits format: `<type>[(scope)][!]: <description>`
 
 - Types: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`,
   `ci`, `chore`, `revert`.
-- The description is non-empty with no trailing full stop.
-- The header is 100 characters or fewer (72 or fewer preferred).
+- The description is non-empty with no trailing full stop; the header is 100
+  characters or fewer (72 or fewer preferred).
 - A body, if present, is separated from the header by a blank line.
 
-After cloning, enable the shared hooks once:
-
-```sh
-git config core.hooksPath .githooks
-```
+After cloning, install the hooks once with `lefthook install` (requires the
+`lefthook` binary, e.g. `brew install lefthook`).

@@ -1,0 +1,10 @@
+# Lefthook — git hooks manager. Install with: lefthook install
+# (requires the lefthook binary, e.g. `brew install lefthook`).
+#
+# commit-msg enforces Conventional Commits via the shared script in
+# .githooks/. No pre-commit linting — this repo is mostly manuscript prose.
+
+commit-msg:
+  commands:
+    conventional:
+      run: .githooks/commit-msg {1}
